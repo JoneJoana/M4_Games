@@ -1,11 +1,12 @@
 package m4.Games;
 
+import java.awt.EventQueue;
+
 /**
  * Hello world!
  *
  */
-public class App{
-    public static void main( String[] args ){
+public class App{   
     	
     	/*
     	 * un Jpanel(contentPane) que contenga 4 Jpanel 
@@ -51,6 +52,9 @@ public class App{
     	 *  la pista mostrara la primera letra no mostrada (de la palabra secreta)			
     	 *  
     	 */
-        
-    }
+    	
+	public static void main(String[] args) {
+		Juego juego = new Juego();
+	}        
+    
 }
