@@ -32,15 +32,20 @@ public class Ventana extends JFrame {
 
 	private JPanel contentPane;
 	JButton btnIniciarJuego;
-	JButton[] arrayBotones;
+	JButton[] arrayBotonesLetras;
 	Label labelPalabra;
+	JButton btnResolver;
+	Button buttonVida1;
+	Button buttonVida2;
+	Button buttonVida3;
+	Button buttonVida4;
+	Button buttonVida5;
 
 	/**
 	 * Create the frame.
 	 */
 	public Ventana() {
-		
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 649, 508);
 		contentPane = new JPanel();
@@ -64,7 +69,7 @@ public class Ventana extends JFrame {
 		btnIniciarJuego.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panelMenu.add(btnIniciarJuego);
 
-		JButton btnResolver = new JButton("Resolver");
+		btnResolver = new JButton("Resolver");
 		btnResolver.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panelMenu.add(btnResolver);
 
@@ -77,19 +82,19 @@ public class Ventana extends JFrame {
 		panelPalabra.add(panelVidas);
 		panelVidas.setLayout(new GridLayout(1, 5, 0, 0));
 
-		Button buttonVida1 = new Button("Vida");
+		buttonVida1 = new Button("Vida");
 		panelVidas.add(buttonVida1);
 
-		Button buttonVida2 = new Button("Vida");
+		buttonVida2 = new Button("Vida");
 		panelVidas.add(buttonVida2);
 
-		Button buttonVida3 = new Button("Vida");
+		buttonVida3 = new Button("Vida");
 		panelVidas.add(buttonVida3);
 
-		Button buttonVida4 = new Button("Vida");
+		buttonVida4 = new Button("Vida");
 		panelVidas.add(buttonVida4);
 
-		Button buttonVida5 = new Button("Vida");
+		buttonVida5 = new Button("Vida");
 		panelVidas.add(buttonVida5);
 
 		JPanel panelPalabraSecreta = new JPanel();
@@ -119,25 +124,25 @@ public class Ventana extends JFrame {
 	}
 
 	private void rellenarBotonesLetras(JPanel panelTeclado) {
-		arrayBotones = new JButton[27];
+		arrayBotonesLetras = new JButton[27];
 		// rellenar el array
 		String letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 		for (int i = 0; i < letras.length(); i++) {
-			arrayBotones[i] = new JButton(String.valueOf(letras.charAt(i)));// nombramos boton
-			arrayBotones[i].setEnabled(false);// dejamos dehabilitados
-			panelTeclado.add(arrayBotones[i]);
+			arrayBotonesLetras[i] = new JButton(String.valueOf(letras.charAt(i)));// nombramos boton
+			arrayBotonesLetras[i].setEnabled(false);// dejamos dehabilitados
+			panelTeclado.add(arrayBotonesLetras[i]);
 		}
 	}
 
 	public void habilitarBotones() {
-		for (int i = 0; i < arrayBotones.length; i++) {
-			arrayBotones[i].setEnabled(true);
+		for (int i = 0; i < arrayBotonesLetras.length; i++) {
+			arrayBotonesLetras[i].setEnabled(true);
 		}
 	}
 
 	public void deshabilitarBotones() {
-		for (int i = 0; i < arrayBotones.length; i++) {
-			arrayBotones[i].setEnabled(false);
+		for (int i = 0; i < arrayBotonesLetras.length; i++) {
+			arrayBotonesLetras[i].setEnabled(false);
 		}
 	}
 
