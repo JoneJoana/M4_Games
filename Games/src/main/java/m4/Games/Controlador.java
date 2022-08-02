@@ -14,15 +14,16 @@ public class Controlador {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					 ventana = new Ventana();
+					ventana = new Ventana();
+
 					ventana.setVisible(true);
+					actionBtnIniciar();
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-
-		actionBtnIniciar();
 
 	}
 
