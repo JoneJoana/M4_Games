@@ -38,7 +38,7 @@ public class Controlador {
 				// ventana.cambiarImagen(); david
 
 				// escoger nueva palabra
-				// juego.crearPartida(); no hace falta porque al crear juego(en el constructor) ya se crea objeto partida  
+				juego.crearPartida(); 
 				ventana.ponerPalabraSecreta(juego.getPartida().getPalabra().length());
 			}
 		});

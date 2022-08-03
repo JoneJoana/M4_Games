@@ -11,7 +11,9 @@ public class Juego {
 	public Juego() {
 		this.vidas = 5;
 		rellenarPalabras();
-		this.partida = new Partida(extraerPalabraRandom());	
+		//this.partida = new Partida(extraerPalabraRandom()); 
+			//es al clicar boton iniciar juego que se inica partida, quizas no hace falta que este en el constructor
+			//por eso mismo quizas no hace falta que partida este dentro de juego?en controlador se podrian crear instancias de las 3..
 	}
 
 	private void rellenarPalabras() {
@@ -27,6 +29,7 @@ public class Juego {
 		palabras.add("britney");
 	}
 
+	
 	public String extraerPalabraRandom() {
 
 		int palabra = (int) (Math.random() * (palabras.size()));
@@ -36,7 +39,6 @@ public class Juego {
 
 	}
 
-	//En el constructor de juego ya se inicia partida, quizas no haria falta este setPartida
 	public void crearPartida() {
 		partida = new Partida(extraerPalabraRandom());
 	}
