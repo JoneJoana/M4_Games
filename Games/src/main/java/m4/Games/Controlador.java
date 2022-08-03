@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Controlador {
-	Juego juego;
-	Ventana ventana;
+	private Juego juego;
+	private Ventana ventana;
 
 	public Controlador() {
 		juego = new Juego();
@@ -29,7 +29,7 @@ public class Controlador {
 
 	// Thread.sleep();
 	public void actionBtnIniciar() {
-		ventana.btnIniciarJuego.addActionListener(new ActionListener() {
+		ventana.getBtnIniciarJuego().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// poner letras teclado habilitadas
 				ventana.habilitarBotones();
@@ -38,14 +38,14 @@ public class Controlador {
 				// ventana.cambiarImagen(); david
 
 				// escoger nueva palabra
-				juego.crearPartida();
-				ventana.ponerPalabraSecreta(juego.partida.palabra.length());
+				// juego.crearPartida(); no hace falta porque al crear juego(en el constructor) ya se crea objeto partida  
+				ventana.ponerPalabraSecreta(juego.getPartida().getPalabra().length());
 			}
 		});
 	}
 
 	public void actionResolver() {//david
-		ventana.btnResolver.addActionListener(new ActionListener() {
+		ventana.getBtnResolver().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// juego.terminarPartida(); --pasa en juego
 				// -> desabilitar botones --pasa en ventana
@@ -70,11 +70,11 @@ public class Controlador {
 				// --a mejorar-->poner botones de pistas en arrayList
 			}
 		};
-		ventana.buttonVida1.addActionListener(pistaListener);
-		ventana.buttonVida2.addActionListener(pistaListener);
-		ventana.buttonVida3.addActionListener(pistaListener);
-		ventana.buttonVida4.addActionListener(pistaListener);
-		ventana.buttonVida5.addActionListener(pistaListener);
+		ventana.getButtonVida1().addActionListener(pistaListener);
+		ventana.getButtonVida2().addActionListener(pistaListener);
+		ventana.getButtonVida3().addActionListener(pistaListener);
+		ventana.getButtonVida4().addActionListener(pistaListener);
+		ventana.getButtonVida5().addActionListener(pistaListener);
 
 	}
 
@@ -88,10 +88,18 @@ public class Controlador {
 				//juego.comprobarFinPartida();
 			}
 		};
-		for (int i = 0; i < ventana.arrayBotonesLetras.length; i++) {
-			ventana.arrayBotonesLetras[i].addActionListener(letrasListener);
+		for (int i = 0; i < ventana.getArrayBotonesLetras().length; i++) {
+			ventana.getArrayBotonesLetras()[i].addActionListener(letrasListener);
 		}
 
+	}
+
+	public Juego getJuego() {
+		return juego;
+	}
+
+	public Ventana getVentana() {
+		return ventana;
 	}
 	
 	/*

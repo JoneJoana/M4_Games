@@ -1,20 +1,17 @@
 package m4.Games;
 
-import java.awt.EventQueue;
 import java.util.ArrayList;
 
 public class Juego {
 
-	int vidas;
-	Partida partida;
-	ArrayList<String> palabras = new ArrayList<String>();
+	private int vidas;
+	private Partida partida;
+	private ArrayList<String> palabras = new ArrayList<String>();	
 
 	public Juego() {
 		this.vidas = 5;
 		rellenarPalabras();
-		this.partida = new Partida(extraerPalabraRandom());
-
-	
+		this.partida = new Partida(extraerPalabraRandom());	
 	}
 
 	private void rellenarPalabras() {
@@ -39,8 +36,21 @@ public class Juego {
 
 	}
 
+	//En el constructor de juego ya se inicia partida, quizas no haria falta este setPartida
 	public void crearPartida() {
 		partida = new Partida(extraerPalabraRandom());
+	}
+	
+	public int getVidas() {
+		return vidas;
+	}
+
+	public Partida getPartida() {
+		return partida;
+	}
+
+	public ArrayList<String> getPalabras() {
+		return palabras;
 	}
 
 }

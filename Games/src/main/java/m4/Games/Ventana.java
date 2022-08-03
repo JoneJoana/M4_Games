@@ -1,45 +1,30 @@
 package m4.Games;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.CardLayout;
-import javax.swing.BoxLayout;
-import javax.swing.SpringLayout;
 import java.awt.GridLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Button;
 import java.awt.Label;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class Ventana extends JFrame {
 
 	private JPanel contentPane;
-	JButton btnIniciarJuego;
-	JButton[] arrayBotonesLetras;
-	Label labelPalabra;
-	JButton btnResolver;
-	Button buttonVida1;
-	Button buttonVida2;
-	Button buttonVida3;
-	Button buttonVida4;
-	Button buttonVida5;
+	private JButton btnIniciarJuego;
+	private JButton[] arrayBotonesLetras;
+	private Label labelPalabra;
+	private JButton btnResolver;
+	private Button buttonVida1;
+	private Button buttonVida2;
+	private Button buttonVida3;
+	private Button buttonVida4;
+	private Button buttonVida5;
 
 	/**
 	 * Create the frame.
@@ -153,6 +138,38 @@ public class Ventana extends JFrame {
 		}
 
 		labelPalabra.setText(palabra);
+	}
+	
+	public JButton getBtnIniciarJuego() {
+		return btnIniciarJuego;
+	}
+
+	public JButton[] getArrayBotonesLetras() {
+		return arrayBotonesLetras;
+	}
+
+	public JButton getBtnResolver() {
+		return btnResolver;
+	}
+
+	public Button getButtonVida1() {
+		return buttonVida1;
+	}
+
+	public Button getButtonVida2() {
+		return buttonVida2;
+	}
+
+	public Button getButtonVida3() {
+		return buttonVida3;
+	}
+
+	public Button getButtonVida4() {
+		return buttonVida4;
+	}
+
+	public Button getButtonVida5() {
+		return buttonVida5;
 	}
 
 }

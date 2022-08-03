@@ -1,11 +1,5 @@
 package m4.Games;
 
-import java.awt.EventQueue;
-
-/**
- * Hello world!
- *
- */
 public class App {
 
 	/*
@@ -53,7 +47,6 @@ public class App {
 
 	public static void main(String[] args) {
 		Controlador controlador = new Controlador();
-
 	}
 
 }
