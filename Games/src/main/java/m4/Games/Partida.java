@@ -30,8 +30,7 @@ public class Partida{
 				//si encuentra la letra añade al arrayList dicha posicion
 				posicionesLetra.add(i);				
 			}
-		}
-		
+		}		
 		return posicionesLetra;
 	}
 
