@@ -149,14 +149,7 @@ public class Ventana extends JFrame {
 		}
 	}
 
-	public void ponerPalabraSecreta(int longitud) {
-		String palabra = "";
-		for (int i = 0; i < longitud; i++) {
-			palabra += "* ";
-		}
 
-		labelPalabra.setText(palabra);
-	}	
 
 	public boolean estasSeguro(String mensaje, String titulo) {
 		int returnOpcion = 0;
@@ -215,22 +208,19 @@ public class Ventana extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void cambiarAsterisco(String letra, ArrayList<Integer> posiciones) {
 		char[] palabraSecreta = labelPalabra.getText().toCharArray();
-		
-		for(int i=0;i<palabraSecreta.length;i+=2) {
-			for(int j=0;j<posiciones.size();j++) {
-				if(palabraSecreta[i]==posiciones.get(j) ) {
-					palabraSecreta[i]=letra.charAt(0);
-				}					
+
+		for (int i = 0; i < palabraSecreta.length; i += 2) {
+			for (int j = 0; j < posiciones.size(); j++) {
+				if (palabraSecreta[i] == posiciones.get(j)) {
+					palabraSecreta[i] = letra.charAt(0);
+				}
 			}
 		}
 	}
 
-	public void mostrarLetraPista() {
-
-	}
 
 	public void quitarVida() {
 		for (int i = 0; i < arrayPistas.length; i++) {
