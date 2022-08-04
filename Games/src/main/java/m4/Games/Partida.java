@@ -107,4 +107,19 @@ public class Partida {
 		}
 		return false;
 	}
+	
+	//se podrian usar en comprobarFinPartida - a usar en estadoJuego()
+	public boolean ganarPartida() {
+		if(!palabraActualSecreta.contains("*")) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean perderPartida() {
+		if(intentos == 0) {
+			return true;
+		}
+		return false;
+	}
 }
