@@ -41,6 +41,7 @@ public class Controlador {
 			public void actionPerformed(ActionEvent arg0) {
 				// poner letras teclado habilitadas
 				ventana.habilitarBotones();
+				quitarPistasUsadas();
 
 				// quitar o poner invisible imagen
 				ventana.cambiarImagen(0);
@@ -51,6 +52,12 @@ public class Controlador {
 				ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
 			}
 		});
+	}
+
+	public void quitarPistasUsadas() {
+		for (int i = 0; i < ventana.getArrayPistas().length - juego.getVidas(); i++) {
+			ventana.quitarVida();
+		}
 	}
 
 	public void actionResolver() {// david
