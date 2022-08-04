@@ -228,6 +228,20 @@ public class Ventana extends JFrame {
 		}
 	}
 
+	public void mostrarLetraPista() {
+
+	}
+
+	public void quitarVida() {
+		for (int i = 0; i < arrayPistas.length; i++) {
+			if (!arrayPistas[i].isEnabled()) {// si econtramos uno desactivado
+				arrayPistas[i - 1].setEnabled(false);// desactivamos el boton anterior al encontrado
+			}
+		}
+		arrayPistas[arrayPistas.length].setEnabled(false);// si no hay ninguno desactivado, desactivamos el ultimo boton
+		// seria equivalente a quitar una vida
+	}
+
 	public JButton getBtnIniciarJuego() {
 		return btnIniciarJuego;
 	}
