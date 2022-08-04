@@ -102,7 +102,7 @@ public class Partida {
 	
 	public boolean comprobarFinPartida() {
 		String asterisco = "*"; 
-		if(intentos == 0 || palabraActualSecreta.contains(asterisco)) {
+		if(intentos == 0 || !palabraActualSecreta.contains(asterisco)) {
 			return true;
 		}
 		return false;

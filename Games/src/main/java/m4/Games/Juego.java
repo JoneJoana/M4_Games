@@ -55,5 +55,12 @@ public class Juego {
 	public ArrayList<String> getPalabras() {
 		return palabras;
 	}
+	
+	public boolean comprobarFinPartida() {
+		if(vidas == 0 || palabras.size() == 0) {
+			return true;
+		}
+		return false;
+	}
 
 }
