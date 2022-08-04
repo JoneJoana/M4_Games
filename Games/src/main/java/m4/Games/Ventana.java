@@ -231,6 +231,16 @@ public class Ventana extends JFrame {
 	public void mostrarLetraPista() {
 
 	}
+	
+	public void mostrarPalabra(String palabra) {
+		char[] palabraSecreta = labelPalabra.getText().toCharArray();
+		
+		for(int i=0;i<palabraSecreta.length;i+=2) { 
+			palabraSecreta[i] = palabra.charAt(i/2);
+		}
+		
+		labelPalabra.setText(palabraSecreta.toString());
+	}
 
 	public void quitarVida() {
 		for (int i = 0; i < arrayPistas.length; i++) {
