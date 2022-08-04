@@ -67,7 +67,7 @@ public class Controlador {
 						// ->ventana.quitarVida(); //(setVisible(false) un boton de pista --pasa en ventana )
 					}
 				} else {
-					JOptionPane.showMessageDialog(ventana, "No tienes suficientes vidas para canjearlas por pistas!!! :(");
+					JOptionPane.showMessageDialog(ventana, "No tienes suficientes vidas");
 				}
 
 			}
