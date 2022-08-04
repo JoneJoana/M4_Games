@@ -48,6 +48,7 @@ public class Partida {
 		for (int i = 0; i < palabraSecreta.length; i += 2) {// Se recorre
 			if (palabraSecreta[i] == '*') {// al encontrar el primer *
 				letra = String.valueOf(palabra.charAt(i / 2));// guardar la letra que hay en esa posicion
+				break;// paramos para que no llegue al final del bucle, ya que no es necesario
 			}
 
 		}
