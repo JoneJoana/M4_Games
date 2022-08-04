@@ -56,7 +56,7 @@ public class Juego {
 		return palabras;
 	}
 	
-	public boolean comprobarFinPartida() {
+	public boolean comprobarFinJuego() {
 		if(vidas == 0 || palabras.size() == 0) {
 			return true;
 		}

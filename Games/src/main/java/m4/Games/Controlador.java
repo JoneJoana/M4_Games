@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-
 public class Controlador {
 	private Juego juego;
 	private Ventana ventana;
@@ -51,8 +50,8 @@ public class Controlador {
 				juego.crearPartida();
 				juego.getPartida().ponerPalabraSecreta();
 				ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
-				
-				//deshabilitar boton nueva partida
+
+				// deshabilitar boton nueva partida
 				ventana.deshabilitarBtnInicio();
 			}
 		});
@@ -79,7 +78,7 @@ public class Controlador {
 						juego.quitarVida(); // quitar una vida--pasa en juego
 						ventana.quitarVida(); // (setVisible(false) un boton de pista --pasa en ventana )
 						ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
-						//Habilitar boton nueva partido
+						// Habilitar boton nueva partido
 						ventana.habilitarBtnInicio();
 					}
 				} else {
@@ -103,6 +102,8 @@ public class Controlador {
 						juego.quitarVida();
 						juego.getPartida().mostrarLetraPista();
 						ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
+						estadoJuego();
+
 					}
 				} else {
 					JOptionPane.showMessageDialog(ventana,
@@ -140,14 +141,15 @@ public class Controlador {
 				} else {
 					juego.getPartida().quitarIntento();
 					ventana.cambiarImagen(Partida.INTENTOS_MAX - juego.getPartida().getIntentos());
-					
+
 				}
-				
+
 				// en cualquier caso se desactiva botonLetra
 				tecla.setEnabled(false);
+				estadoJuego();
 
 				// partida.comprobarFinPartida();
-				//juego.comprobarFinJuego();
+				// juego.comprobarFinJuego();
 			}
 
 		};
@@ -157,6 +159,26 @@ public class Controlador {
 		// lo veo dos procesos distintos.
 		for (int i = 0; i < ventana.getArrayBotonesLetras().length; i++) {
 			ventana.getArrayBotonesLetras()[i].addActionListener(letrasListener);
+		}
+
+	}
+
+	public void estadoJuego() {
+		if (juego.comprobarFinJuego()) {
+			JOptionPane.showMessageDialog(ventana, "fin juego");
+		} else {// mientras haya vidas i/o palabras verifica si se ha acabado o no la partida
+
+			if (juego.getPartida().comprobarFinPartida()) {// si la partida se acaba
+				boolean respuesta = ventana.estasSeguro("quieres iniciar otra partida?", "FIN PARTIDA");
+
+				if (respuesta == true) {// yes
+					actionBtnIniciar();// reiniciamos partida nueva
+				} else {
+					JOptionPane.showMessageDialog(ventana, "HASTA LA PROXIMA!");
+					ventana.setVisible(false);
+				}
+
+			}
 		}
 
 	}
