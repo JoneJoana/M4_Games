@@ -162,6 +162,15 @@ public class Controlador {
 		}
 
 	}
+	
+	public JButton buscarBotonParaDesabilitar(String letra) {
+		JButton botonParaDesactivar= new JButton();
+		
+		
+		
+		return botonParaDesactivar;
+		
+	}
 
 	public void estadoJuego() {
 		if (juego.comprobarFinJuego()) {
@@ -172,7 +181,9 @@ public class Controlador {
 				boolean respuesta = ventana.estasSeguro("quieres iniciar otra partida?", "FIN PARTIDA");
 
 				if (respuesta == true) {// yes
-					actionBtnIniciar();// reiniciamos partida nueva
+					
+				// iniciamos partida nueva
+					
 				} else {
 					JOptionPane.showMessageDialog(ventana, "HASTA LA PROXIMA!");
 					ventana.setVisible(false);

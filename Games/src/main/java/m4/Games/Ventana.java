@@ -27,6 +27,10 @@ public class Ventana extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnIniciarJuego;
+	public void setBtnIniciarJuego(JButton btnIniciarJuego) {
+		this.btnIniciarJuego = btnIniciarJuego;
+	}
+
 	private JButton[] arrayBotonesLetras;
 	private JButton[] arrayPistas;
 	private Label labelPalabra;
