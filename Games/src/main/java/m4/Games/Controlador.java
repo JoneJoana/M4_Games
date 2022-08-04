@@ -22,6 +22,8 @@ public class Controlador {
 					ventana.setVisible(true);
 					actionBtnIniciar();
 					actionPista();
+					actionResolver();
+					actionBotonesLetras();
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -126,14 +128,11 @@ public class Controlador {
 		}
 
 	}
-
-	public Juego getJuego() {
-		return juego;
-	}
-
-	public Ventana getVentana() {
-		return ventana;
-	}
+	/*
+	 * public Juego getJuego() { return juego; }
+	 * 
+	 * public Ventana getVentana() { return ventana; }
+	 */
 
 	/*
 	 * hacer barra de menu con boton de ayuda y boton about us
