@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 public class Controlador {
 	private Juego juego;
@@ -73,14 +74,21 @@ public class Controlador {
 
 			public void actionPerformed(ActionEvent e) {
 				// condicion vidas
-				boolean respuesta = ventana.estasSeguro("Perderas una vida a cambio de una pista, estas seguro?",
-						"PISTA");
+				if (juego.getVidas() > 1) {
+					boolean respuesta = ventana.estasSeguro("Perderas una vida a cambio de una pista, estas seguro?",
+							"PISTA");
+					if (respuesta == true) {
+						ventana.quitarVida();
+						juego.quitarVida();
+						ventana.mostrarLetraPista();// falta hacer
+					} else if (respuesta == false) {
 
-				// -si es true la funcion que llamamos
-				// ->juego.quitarUnaVida();
-				// ->ventana.quitarVida();
-				// ventana.mostrarLetraPista();
-				// --a mejorar-->poner botones de pistas en arrayList
+					}
+				} else {
+					JOptionPane.showMessageDialog(ventana,
+							"No tienes suficientes vidas para canjearlas por pistas!!! :(");
+				}
+
 			}
 		};
 		for (int i = 0; i < ventana.getArrayPistas().length; i++) {
