@@ -116,9 +116,9 @@ public class Ventana extends JFrame {
 	}
 
 	private void rellenarBotonesLetras(JPanel panelTeclado) {
-		arrayBotonesLetras = new JButton[27];
 		// rellenar el array
 		String letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+		arrayBotonesLetras = new JButton[letras.length()];
 		for (int i = 0; i < letras.length(); i++) {
 			arrayBotonesLetras[i] = new JButton(String.valueOf(letras.charAt(i)));// nombramos boton
 			panelTeclado.add(arrayBotonesLetras[i]);
