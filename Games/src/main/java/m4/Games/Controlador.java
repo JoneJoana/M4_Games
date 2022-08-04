@@ -97,8 +97,6 @@ public class Controlador {
 						juego.quitarVida();
 						juego.getPartida().mostrarLetraPista();
 						ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
-					} else if (respuesta == false) {
-
 					}
 				} else {
 					JOptionPane.showMessageDialog(ventana,
