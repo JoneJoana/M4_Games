@@ -54,16 +54,21 @@ public class Controlador {
 	public void actionResolver() {// david
 		ventana.getBtnResolver().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// Confirmar siguiente partida ventana.confirmarPartida()
-				// if(ventana.confirmarPartida()) {
-				// juego.terminarPartida(); --pasa en juego
-				juego.crearPartida();
-				// -> desabilitar botones --pasa en ventana
-				// ->muestra la palabra secreta--pasa en ventana
-
-				// ->juego.quitarVida(); quitar una vida--pasa en juego
-				// ->ventana.quitarVida(); (setVisible(false) un boton de pista --pasa en
-				// ventana )
+				// Confirmar siguiente partida 
+				if(juego.getVidas()>1) {
+					if (ventana.estasSeguro("Deseas resolver la partida? Perderas una vida", "Resolver")) {
+						// juego.terminarPartida(); --pasa en juego
+						//juego.crearPartida();
+						// -> desabilitar botones --pasa en ventana
+						ventana.deshabilitarBotones();
+						// ->muestra la palabra secreta--pasa en ventana
+						//ventana.mostrarPalabra(juego.getPartida().getPalabra());
+						// ->juego.quitarVida(); //quitar una vida--pasa en juego
+						// ->ventana.quitarVida(); //(setVisible(false) un boton de pista --pasa en ventana )
+					}
+				} else {
+					JOptionPane.showMessageDialog(ventana, "No tienes suficientes vidas");
+				}
 
 			}
 		});
