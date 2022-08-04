@@ -19,6 +19,7 @@ import java.awt.Label;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
 
@@ -155,7 +156,7 @@ public class Ventana extends JFrame {
 		}
 
 		labelPalabra.setText(palabra);
-	}
+	}	
 
 	public boolean estasSeguro(String mensaje, String titulo) {
 		int returnOpcion = 0;
@@ -214,6 +215,18 @@ public class Ventana extends JFrame {
 			e.printStackTrace();
 		}
 	}
+	
+	public void cambiarAsterisco(String letra, ArrayList<Integer> posiciones) {
+		char[] palabraSecreta = labelPalabra.getText().toCharArray();
+		
+		for(int i=0;i<palabraSecreta.length;i+=2) {
+			for(int j=0;j<posiciones.size();j++) {
+				if(palabraSecreta[i]==posiciones.get(j) ) {
+					palabraSecreta[i]=letra.charAt(0);
+				}					
+			}
+		}
+	}
 
 	public JButton getBtnIniciarJuego() {
 		return btnIniciarJuego;
@@ -235,4 +248,11 @@ public class Ventana extends JFrame {
 		this.arrayPistas = arrayPistas;
 	}
 
+	public Label getLabelPalabra() {
+		return labelPalabra;
+	}
+
+	public void setLabelPalabra(Label labelPalabra) {
+		this.labelPalabra = labelPalabra;
+	}
 }

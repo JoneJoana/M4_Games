@@ -106,6 +106,7 @@ public class Controlador {
 				// guardamos en un array list, las posibles multiples posiciones de la letra
 				ArrayList<Integer> posiciones = juego.getPartida().posicionesLetra(letra);
 
+				ventana.cambiarAsterisco(letra, posiciones);
 				/*
 				 * acceder a los asteriscos por posicion y ver cuales hay que cambiar, segun los
 				 * datos guardados en lanterior arraylist. Podriamos hacer que
@@ -119,6 +120,7 @@ public class Controlador {
 
 				// juego.comprobarFinPartida();
 			}
+			
 		};
 
 		// esto no deberia ir en ventana? el action tiene la accion a hacer al clicar
