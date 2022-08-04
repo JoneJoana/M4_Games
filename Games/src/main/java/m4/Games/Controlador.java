@@ -40,6 +40,7 @@ public class Controlador {
 		ventana.getBtnIniciarJuego().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// poner letras teclado habilitadas
+				
 				ventana.habilitarBotones();
 				quitarPistasUsadas();
 
@@ -84,7 +85,6 @@ public class Controlador {
 				} else {
 					JOptionPane.showMessageDialog(ventana, "No tienes suficientes vidas");
 				}
-
 			}
 		});
 	}
@@ -102,14 +102,11 @@ public class Controlador {
 						juego.quitarVida();
 						juego.getPartida().mostrarLetraPista();
 						ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
-						estadoJuego();
-
 					}
 				} else {
 					JOptionPane.showMessageDialog(ventana,
 							"No tienes suficientes vidas para canjearlas por pistas!!! :(");
 				}
-
 			}
 		};
 		for (int i = 0; i < ventana.getArrayPistas().length; i++) {
@@ -124,10 +121,11 @@ public class Controlador {
 			public void actionPerformed(ActionEvent e) {
 				/*
 				 * si existe la letra -> se desactivara el boton y mostrara las letras de la
-				 * palabra secreta acertada si no existe la letra -> se carga la siguiente
+				 * palabra secreta acertada 
+				 * si no existe la letra -> se carga la siguiente
 				 * imagen del ahorcado
-				 */
-
+				 */				
+				
 				// extraemos info del evento que activa este actionListener;
 				String letra = e.getActionCommand();
 				JButton tecla = (JButton) e.getSource();
@@ -137,19 +135,13 @@ public class Controlador {
 
 				if (juego.getPartida().cambiarAsterisco(letra, posiciones)) {
 					ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
-
 				} else {
 					juego.getPartida().quitarIntento();
 					ventana.cambiarImagen(Partida.INTENTOS_MAX - juego.getPartida().getIntentos());
-
 				}
 
 				// en cualquier caso se desactiva botonLetra
-				tecla.setEnabled(false);
-				estadoJuego();
-
-				// partida.comprobarFinPartida();
-				// juego.comprobarFinJuego();
+				tecla.setEnabled(false);			
 			}
 
 		};
@@ -163,22 +155,66 @@ public class Controlador {
 
 	}
 
+	//aclarar en que momentos llamarlo
 	public void estadoJuego() {
-		if (juego.comprobarFinJuego()) {
-			JOptionPane.showMessageDialog(ventana, "fin juego");
+		if (juego.comprobarFinJuego()) {			
+			JOptionPane.showMessageDialog(ventana, "Fin de juego. No te quedan mas vidas :(");
+			ventana.setVisible(false);
 		} else {// mientras haya vidas i/o palabras verifica si se ha acabado o no la partida
 
 			if (juego.getPartida().comprobarFinPartida()) {// si la partida se acaba
+				
+		/**tenemos que saber porque se acaba - si es por intentos pierdes vida pero si es por haber acertado no te tiene que restar vida**
+		 * mirar metodos ganar() perder() en partida
+		 * */
+				
 				boolean respuesta = ventana.estasSeguro("quieres iniciar otra partida?", "FIN PARTIDA");
 
-				if (respuesta == true) {// yes
-					actionBtnIniciar();// reiniciamos partida nueva
+				if (respuesta) {// yes
+					ventana.quitarVida();
+					juego.quitarVida();
+					// estadoJuego();
+					ventana.habilitarBtnInicio();					
+					ventana.getBtnIniciarJuego().doClick(5);;// reiniciamos partida nueva
 				} else {
 					JOptionPane.showMessageDialog(ventana, "HASTA LA PROXIMA!");
 					ventana.setVisible(false);
 				}
 
 			}
+			
+			/* --- me he liado yo sola, no va bien asi como esta, pero por si sirve ---
+			 * 
+			 * public void estadoJuego() {
+					if (juego.comprobarFinJuego()) {			
+						JOptionPane.showMessageDialog(ventana, "Fin de juego. No te quedan mas vidas :(");
+						ventana.setVisible(false);
+						System.exit(0);
+					} else {// mientras haya vidas i/o palabras verifica si se ha acabado o no la partida
+
+						if (juego.getPartida().perderPartida()) {// si partida perdida
+							ventana.quitarVida(); //pierdes vida
+							juego.quitarVida();
+						}
+						if(juego.getPartida().ganarPartida()) {
+							JOptionPane.showMessageDialog(ventana, "HAS GANADO!!");
+						}			
+				
+						if(juego.getPartida().comprobarFinPartida()) {
+							boolean respuesta = ventana.estasSeguro("Quieres iniciar otra partida?", "FIN PARTIDA");
+							if (respuesta) {// yes				
+								ventana.habilitarBtnInicio();					
+								ventana.getBtnIniciarJuego().doClick(5);;// reiniciamos partida nueva
+							} else {
+								JOptionPane.showMessageDialog(ventana, "HASTA LA PROXIMA!");
+								ventana.setVisible(false);
+							}							
+						}
+					}
+				}				
+			 */
+			
+			
 		}
 
 	}
