@@ -21,6 +21,7 @@ public class Controlador {
 					ventana = new Ventana();
 
 					ventana.setVisible(true);
+					ventana.deshabilitarBotones();
 					actionBtnIniciar();
 					actionPista();
 					actionResolver();
@@ -46,7 +47,8 @@ public class Controlador {
 
 				// escoger nueva palabra
 				juego.crearPartida();
-				ventana.ponerPalabraSecreta(juego.getPartida().getPalabra().length());
+				juego.getPartida().ponerPalabraSecreta();
+				ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
 			}
 		});
 	}
@@ -54,17 +56,18 @@ public class Controlador {
 	public void actionResolver() {// david
 		ventana.getBtnResolver().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// Confirmar siguiente partida 
-				if(juego.getVidas()>1) {
+				// Confirmar siguiente partida
+				if (juego.getVidas() > 1) {
 					if (ventana.estasSeguro("Deseas resolver la partida? Perderas una vida", "Resolver")) {
 						// juego.terminarPartida(); --pasa en juego
-						//juego.crearPartida();
+						// juego.crearPartida();
 						// -> desabilitar botones --pasa en ventana
 						ventana.deshabilitarBotones();
 						// ->muestra la palabra secreta--pasa en ventana
-						ventana.mostrarPalabra(juego.getPartida().getPalabra());
-						juego.quitarVida(); //quitar una vida--pasa en juego
-						ventana.quitarVida(); //(setVisible(false) un boton de pista --pasa en ventana )
+						juego.getPartida().mostrarPalabra(juego.getPartida().getPalabra());
+						juego.quitarVida(); // quitar una vida--pasa en juego
+						ventana.quitarVida(); // (setVisible(false) un boton de pista --pasa en ventana )
+						ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
 					}
 				} else {
 					JOptionPane.showMessageDialog(ventana, "No tienes suficientes vidas");
@@ -85,7 +88,8 @@ public class Controlador {
 					if (respuesta == true) {
 						ventana.quitarVida();
 						juego.quitarVida();
-						ventana.mostrarLetraPista();// falta hacer
+						juego.getPartida().mostrarLetraPista();
+						ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
 					} else if (respuesta == false) {
 
 					}
@@ -119,7 +123,8 @@ public class Controlador {
 				// guardamos en un array list, las posibles multiples posiciones de la letra
 				ArrayList<Integer> posiciones = juego.getPartida().posicionesLetra(letra);
 
-				ventana.cambiarAsterisco(letra, posiciones);
+				juego.getPartida().cambiarAsterisco(letra, posiciones);
+				ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
 				/*
 				 * acceder a los asteriscos por posicion y ver cuales hay que cambiar, segun los
 				 * datos guardados en lanterior arraylist. Podriamos hacer que
@@ -133,7 +138,7 @@ public class Controlador {
 
 				// juego.comprobarFinPartida();
 			}
-			
+
 		};
 
 		// esto no deberia ir en ventana? el action tiene la accion a hacer al clicar

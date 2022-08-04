@@ -43,18 +43,15 @@ public class Partida {
 	}
 
 	public void mostrarLetraPista() {
-		char[] palabraSecreta = palabraActualSecreta.toCharArray();
-		for (int i = 0; i < palabraSecreta.length; i += 2) {
-			if (palabraSecreta[i] == '*') {
-
+		String letra = "";
+		char[] palabraSecreta = palabraActualSecreta.toCharArray();//la palabra con los asteriscos
+		for (int i = 0; i < palabraSecreta.length; i += 2) {//Se recorre 
+			if (palabraSecreta[i] == '*') {//al encontrar el primer *
+				letra = String.valueOf(palabra.charAt(i / 2));//guardar la letra que hay en esa posicion
 			}
+
 		}
-	}
-
-	public char obtenerLetraDeLaPosicion() {
-		char letra = 0;
-
-		return letra;
+		cambiarAsterisco(letra, posicionesLetra(letra));
 	}
 
 	/***
@@ -69,7 +66,7 @@ public class Partida {
 
 		palabraActualSecreta = palabra;
 	}
-	
+
 	public void cambiarAsterisco(String letra, ArrayList<Integer> posiciones) {
 		char[] palabraSecreta = palabraActualSecreta.toCharArray();
 
@@ -80,17 +77,17 @@ public class Partida {
 				}
 			}
 		}
-		
+
 		palabraActualSecreta = palabraSecreta.toString();
 	}
-	
+
 	public void mostrarPalabra(String palabra) {
 		char[] palabraSecreta = palabraActualSecreta.toCharArray();
-		
-		for(int i=0;i<palabraSecreta.length;i+=2) { 
-			palabraSecreta[i] = palabra.charAt(i/2);
+
+		for (int i = 0; i < palabraSecreta.length; i += 2) {
+			palabraSecreta[i] = palabra.charAt(i / 2);
 		}
-		
+
 		palabraActualSecreta = palabraSecreta.toString();
 	}
 

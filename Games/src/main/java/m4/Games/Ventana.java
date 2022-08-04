@@ -149,8 +149,6 @@ public class Ventana extends JFrame {
 		}
 	}
 
-
-
 	public boolean estasSeguro(String mensaje, String titulo) {
 		int returnOpcion = 0;
 		boolean respuesta = false;
@@ -208,19 +206,19 @@ public class Ventana extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void cambiarPalabra(String palabra) {
 		labelPalabra.setText(palabra);
 	}
 
-
 	public void quitarVida() {
-		for (int i = 0; i < arrayPistas.length; i++) {
+		for (int i = 1; i < arrayPistas.length; i++) {
 			if (!arrayPistas[i].isEnabled()) {// si econtramos uno desactivado
 				arrayPistas[i - 1].setEnabled(false);// desactivamos el boton anterior al encontrado
 			}
 		}
-		arrayPistas[arrayPistas.length].setEnabled(false);// si no hay ninguno desactivado, desactivamos el ultimo boton
+		arrayPistas[arrayPistas.length - 1].setEnabled(false);// si no hay ninguno desactivado, desactivamos el ultimo
+																// boton
 		// seria equivalente a quitar una vida
 	}
 
