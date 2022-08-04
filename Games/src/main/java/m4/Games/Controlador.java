@@ -50,10 +50,13 @@ public class Controlador {
 	public void actionResolver() {//david
 		ventana.getBtnResolver().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				// Confirmar siguiente partida ventana.confirmarPartida()
+				//if(ventana.confirmarPartida()) {
 				// juego.terminarPartida(); --pasa en juego
+				juego.crearPartida();
 				// -> desabilitar botones --pasa en ventana
 				// ->muestra la palabra secreta--pasa en ventana
-				// ->juego.quitarUnaVida(); quitar una vida--pasa en juego
+				// ->juego.quitarVida(); quitar una vida--pasa en juego
 				// ->ventana.quitarVida(); (setVisible(false) un boton de pista --pasa en ventana )
 
 			}
