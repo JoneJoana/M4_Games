@@ -1,6 +1,7 @@
 package m4.Games;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
@@ -18,6 +19,7 @@ public class Ventana extends JFrame {
 	private JPanel contentPane;
 	private JButton btnIniciarJuego;
 	private JButton[] arrayBotonesLetras;
+	private JButton[] arrayPistas;
 	private Label labelPalabra;
 	private JButton btnResolver;
 	private Button buttonVida1;
@@ -67,20 +69,7 @@ public class Ventana extends JFrame {
 		panelPalabra.add(panelVidas);
 		panelVidas.setLayout(new GridLayout(1, 5, 0, 0));
 
-		buttonVida1 = new Button("Vida");
-		panelVidas.add(buttonVida1);
-
-		buttonVida2 = new Button("Vida");
-		panelVidas.add(buttonVida2);
-
-		buttonVida3 = new Button("Vida");
-		panelVidas.add(buttonVida3);
-
-		buttonVida4 = new Button("Vida");
-		panelVidas.add(buttonVida4);
-
-		buttonVida5 = new Button("Vida");
-		panelVidas.add(buttonVida5);
+		ponerBotonesPistas(panelVidas, 5);
 
 		JPanel panelPalabraSecreta = new JPanel();
 		panelPalabra.add(panelPalabraSecreta);
@@ -108,26 +97,47 @@ public class Ventana extends JFrame {
 
 	}
 
+	private void ponerBotonesPistas(JPanel panelVidas, int longitud) {
+		arrayPistas = new JButton[longitud];
+		for (int i = 0; i < arrayPistas.length; i++) {
+			arrayPistas[i] = new JButton("Vida");
+			panelVidas.add(arrayPistas[i]);
+
+		}
+
+	}
+
 	private void rellenarBotonesLetras(JPanel panelTeclado) {
 		arrayBotonesLetras = new JButton[27];
 		// rellenar el array
 		String letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 		for (int i = 0; i < letras.length(); i++) {
 			arrayBotonesLetras[i] = new JButton(String.valueOf(letras.charAt(i)));// nombramos boton
-			arrayBotonesLetras[i].setEnabled(false);// dejamos dehabilitados
 			panelTeclado.add(arrayBotonesLetras[i]);
 		}
 	}
 
 	public void habilitarBotones() {
+		btnResolver.setEnabled(true);
+
 		for (int i = 0; i < arrayBotonesLetras.length; i++) {
 			arrayBotonesLetras[i].setEnabled(true);
 		}
+		for (int i = 0; i < arrayPistas.length; i++) {
+			arrayPistas[i].setEnabled(true);
+		}
+
 	}
 
 	public void deshabilitarBotones() {
+		btnResolver.setEnabled(false);
+
 		for (int i = 0; i < arrayBotonesLetras.length; i++) {
 			arrayBotonesLetras[i].setEnabled(false);
+		}
+
+		for (int i = 0; i < arrayPistas.length; i++) {
+			arrayPistas[i].setEnabled(false);
 		}
 	}
 
@@ -139,7 +149,19 @@ public class Ventana extends JFrame {
 
 		labelPalabra.setText(palabra);
 	}
-	
+
+	public boolean estasSeguro(String mensaje1, String mensaje2) {
+		int returnOpcion = 0;
+		boolean respuesta = false;
+		returnOpcion = JOptionPane.showConfirmDialog(this, mensaje1, mensaje2, JOptionPane.YES_NO_OPTION);
+		if (returnOpcion == JOptionPane.YES_OPTION) {
+			respuesta = true;
+		} else if (returnOpcion == JOptionPane.NO_OPTION) {
+			respuesta = false;
+		}
+		return respuesta;
+	}
+
 	public JButton getBtnIniciarJuego() {
 		return btnIniciarJuego;
 	}
