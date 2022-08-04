@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import org.omg.CORBA.INTERNAL;
 
 public class Controlador {
 	private Juego juego;
