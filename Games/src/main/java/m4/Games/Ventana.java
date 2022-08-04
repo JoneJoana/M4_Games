@@ -221,6 +221,14 @@ public class Ventana extends JFrame {
 																// boton
 		// seria equivalente a quitar una vida
 	}
+	
+	public void habilitarBtnInicio() {
+		btnIniciarJuego.setEnabled(true);
+	}
+	
+	public void deshabilitarBtnInicio() {
+		btnIniciarJuego.setEnabled(false);
+	}
 
 	public JButton getBtnIniciarJuego() {
 		return btnIniciarJuego;
