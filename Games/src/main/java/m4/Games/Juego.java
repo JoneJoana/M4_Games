@@ -40,6 +40,10 @@ public class Juego {
 		partida = new Partida(extraerPalabraRandom());
 	}
 	
+	public void quitarVida() {
+		vidas--;
+	}
+	
 	public int getVidas() {
 		return vidas;
 	}
