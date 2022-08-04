@@ -51,6 +51,9 @@ public class Controlador {
 				juego.crearPartida();
 				juego.getPartida().ponerPalabraSecreta();
 				ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
+				
+				//deshabilitar boton nueva partida
+				ventana.deshabilitarBtnInicio();
 			}
 		});
 	}
@@ -76,6 +79,8 @@ public class Controlador {
 						juego.quitarVida(); // quitar una vida--pasa en juego
 						ventana.quitarVida(); // (setVisible(false) un boton de pista --pasa en ventana )
 						ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
+						//Habilitar boton nueva partido
+						ventana.habilitarBtnInicio();
 					}
 				} else {
 					JOptionPane.showMessageDialog(ventana, "No tienes suficientes vidas");
