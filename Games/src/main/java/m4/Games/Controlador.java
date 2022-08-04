@@ -38,7 +38,7 @@ public class Controlador {
 				ventana.habilitarBotones();
 
 				// quitar o poner invisible imagen
-				// ventana.cambiarImagen(); david
+				ventana.cambiarImagen(0); 
 
 				// escoger nueva palabra
 				juego.crearPartida(); 

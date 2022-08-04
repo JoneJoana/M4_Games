@@ -11,9 +11,6 @@ public class Juego {
 	public Juego() {
 		this.vidas = 5;
 		rellenarPalabras();
-		//this.partida = new Partida(extraerPalabraRandom()); 
-			//es al clicar boton iniciar juego que se inica partida, quizas no hace falta que este en el constructor
-			//por eso mismo quizas no hace falta que partida este dentro de juego?en controlador se podrian crear instancias de las 3..
 	}
 
 	private void rellenarPalabras() {
