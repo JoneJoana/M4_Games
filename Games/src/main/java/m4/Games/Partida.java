@@ -7,9 +7,10 @@ public class Partida {
 	private int intentos;
 	private String palabra;
 	private String palabraActualSecreta;
+	public static final int INTENTOS_MAX = 10;
 
 	public Partida(String palabra) {
-		this.intentos = 10;
+		this.intentos = INTENTOS_MAX;
 		this.palabra = palabra;
 
 	}
@@ -22,7 +23,7 @@ public class Partida {
 		return palabraActualSecreta;
 	}
 
-	public int intentos() {
+	public int getIntentos() {
 		return intentos;
 	}
 
@@ -95,4 +96,7 @@ public class Partida {
 		palabraActualSecreta = String.valueOf(palabraSecreta);
 	}
 
+	public void quitarIntento() {
+		intentos--;
+	}
 }

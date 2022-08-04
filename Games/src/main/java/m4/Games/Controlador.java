@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import org.omg.CORBA.INTERNAL;
+
 public class Controlador {
 	private Juego juego;
 	private Ventana ventana;
@@ -128,8 +130,14 @@ public class Controlador {
 				// guardamos en un array list, las posibles multiples posiciones de la letra
 				ArrayList<Integer> posiciones = juego.getPartida().posicionesLetra(letra);
 
-				juego.getPartida().cambiarAsterisco(letra, posiciones);
-				ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
+				if (juego.getPartida().cambiarAsterisco(letra, posiciones)) {
+					ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
+
+				} else {
+					juego.getPartida().quitarIntento();
+					ventana.cambiarImagen(Partida.INTENTOS_MAX - juego.getPartida().getIntentos());
+					
+				}
 				/*
 				 * acceder a los asteriscos por posicion y ver cuales hay que cambiar, segun los
 				 * datos guardados en lanterior arraylist. Podriamos hacer que
