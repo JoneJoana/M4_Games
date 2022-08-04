@@ -99,4 +99,12 @@ public class Partida {
 	public void quitarIntento() {
 		intentos--;
 	}
+	
+	public boolean comprobarFinPartida() {
+		String asterisco = "*"; 
+		if(intentos == 0 || palabraActualSecreta.contains(asterisco)) {
+			return true;
+		}
+		return false;
+	}
 }
