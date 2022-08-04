@@ -73,7 +73,8 @@ public class Controlador {
 
 			public void actionPerformed(ActionEvent e) {
 				// condicion vidas
-				ventana.estasSeguro("pista", "estas seguro?");
+				boolean respuesta = ventana.estasSeguro("Perderas una vida a cambio de una pista, estas seguro?",
+						"PISTA");
 
 				// -si es true la funcion que llamamos
 				// ->juego.quitarUnaVida();

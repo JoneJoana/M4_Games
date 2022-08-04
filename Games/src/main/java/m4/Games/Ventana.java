@@ -157,10 +157,10 @@ public class Ventana extends JFrame {
 		labelPalabra.setText(palabra);
 	}
 
-	public boolean estasSeguro(String mensaje1, String mensaje2) {
+	public boolean estasSeguro(String mensaje, String titulo) {
 		int returnOpcion = 0;
 		boolean respuesta = false;
-		returnOpcion = JOptionPane.showConfirmDialog(this, mensaje1, mensaje2, JOptionPane.YES_NO_OPTION);
+		returnOpcion = JOptionPane.showConfirmDialog(this, mensaje, titulo, JOptionPane.YES_NO_OPTION);
 		if (returnOpcion == JOptionPane.YES_OPTION) {
 			respuesta = true;
 		} else if (returnOpcion == JOptionPane.NO_OPTION) {
