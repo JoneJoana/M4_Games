@@ -62,9 +62,9 @@ public class Controlador {
 						// -> desabilitar botones --pasa en ventana
 						ventana.deshabilitarBotones();
 						// ->muestra la palabra secreta--pasa en ventana
-						//ventana.mostrarPalabra(juego.getPartida().getPalabra());
-						// ->juego.quitarVida(); //quitar una vida--pasa en juego
-						// ->ventana.quitarVida(); //(setVisible(false) un boton de pista --pasa en ventana )
+						ventana.mostrarPalabra(juego.getPartida().getPalabra());
+						juego.quitarVida(); //quitar una vida--pasa en juego
+						ventana.quitarVida(); //(setVisible(false) un boton de pista --pasa en ventana )
 					}
 				} else {
 					JOptionPane.showMessageDialog(ventana, "No tienes suficientes vidas");
