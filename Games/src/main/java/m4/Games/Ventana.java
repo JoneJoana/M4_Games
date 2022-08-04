@@ -30,11 +30,6 @@ public class Ventana extends JFrame {
 	private JButton[] arrayPistas;
 	private Label labelPalabra;
 	private JButton btnResolver;
-	private Button buttonVida1;
-	private Button buttonVida2;
-	private Button buttonVida3;
-	private Button buttonVida4;
-	private Button buttonVida5;
 	private JLabel lblDibujo;
 
 	/**
@@ -103,7 +98,7 @@ public class Ventana extends JFrame {
 		JPanel panelDibujo = new JPanel();
 		panelDibujo.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPane.add(panelDibujo);
-		
+
 		lblDibujo = new JLabel("");
 		panelDibujo.add(lblDibujo);
 
@@ -174,12 +169,10 @@ public class Ventana extends JFrame {
 		return respuesta;
 	}
 
-
-	
 	public void cambiarImagen(int numImagen) {
 		try {
 			String direccion = "res/ahorcado1.png";
-			switch(numImagen) {
+			switch (numImagen) {
 			case 0:
 				direccion = "res/ahorcado0.png";
 				break;
@@ -214,7 +207,7 @@ public class Ventana extends JFrame {
 				direccion = "res/ahorcado10.png";
 				break;
 			}
-			
+
 			BufferedImage imagen = ImageIO.read(new FileInputStream(direccion));
 			lblDibujo.setIcon(new ImageIcon(imagen));
 		} catch (IOException e) {
@@ -234,24 +227,12 @@ public class Ventana extends JFrame {
 		return btnResolver;
 	}
 
-	public Button getButtonVida1() {
-		return buttonVida1;
+	public JButton[] getArrayPistas() {
+		return arrayPistas;
 	}
 
-	public Button getButtonVida2() {
-		return buttonVida2;
-	}
-
-	public Button getButtonVida3() {
-		return buttonVida3;
-	}
-
-	public Button getButtonVida4() {
-		return buttonVida4;
-	}
-
-	public Button getButtonVida5() {
-		return buttonVida5;
+	public void setArrayPistas(JButton[] arrayPistas) {
+		this.arrayPistas = arrayPistas;
 	}
 
 }

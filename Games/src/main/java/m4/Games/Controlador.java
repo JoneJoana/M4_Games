@@ -39,7 +39,7 @@ public class Controlador {
 				ventana.habilitarBotones();
 
 				// quitar o poner invisible imagen
-				ventana.cambiarImagen(0); 
+				ventana.cambiarImagen(0);
 
 				// escoger nueva palabra
 				juego.crearPartida();
@@ -52,14 +52,15 @@ public class Controlador {
 		ventana.getBtnResolver().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// Confirmar siguiente partida ventana.confirmarPartida()
-				//if(ventana.confirmarPartida()) {
+				// if(ventana.confirmarPartida()) {
 				// juego.terminarPartida(); --pasa en juego
 				juego.crearPartida();
 				// -> desabilitar botones --pasa en ventana
 				// ->muestra la palabra secreta--pasa en ventana
 
 				// ->juego.quitarVida(); quitar una vida--pasa en juego
-				// ->ventana.quitarVida(); (setVisible(false) un boton de pista --pasa en ventana )
+				// ->ventana.quitarVida(); (setVisible(false) un boton de pista --pasa en
+				// ventana )
 
 			}
 		});
@@ -69,7 +70,7 @@ public class Controlador {
 		ActionListener pistaListener = new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-      //condicion vidas 
+				// condicion vidas
 				ventana.estasSeguro("pista", "estas seguro?");
 
 				// -si es true la funcion que llamamos
@@ -79,11 +80,9 @@ public class Controlador {
 				// --a mejorar-->poner botones de pistas en arrayList
 			}
 		};
-		ventana.getButtonVida1().addActionListener(pistaListener);
-		ventana.getButtonVida2().addActionListener(pistaListener);
-		ventana.getButtonVida3().addActionListener(pistaListener);
-		ventana.getButtonVida4().addActionListener(pistaListener);
-		ventana.getButtonVida5().addActionListener(pistaListener);
+		for (int i = 0; i < ventana.getArrayPistas().length; i++) {
+			ventana.getArrayPistas()[i].addActionListener(pistaListener);
+		}
 
 	}
 
