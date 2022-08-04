@@ -14,16 +14,16 @@ public class Juego {
 	}
 
 	private void rellenarPalabras() {
-		palabras.add("tabaco");
-		palabras.add("estocolmo");
-		palabras.add("azucena");
-		palabras.add("candelabro");
-		palabras.add("resurreccion");
-		palabras.add("deshabilitar");
-		palabras.add("github");
-		palabras.add("antananaribo");
-		palabras.add("madagascar");
-		palabras.add("britney");
+		palabras.add("TABACO");
+		palabras.add("ESTOCOLMO");
+		palabras.add("AZUCENA");
+		palabras.add("CANDELABRO");
+		palabras.add("RESURRECCION");
+		palabras.add("DESHABILITAR");
+		palabras.add("GITHUB");
+		palabras.add("ANTANANARIVO");
+		palabras.add("MADAGASCAR");
+		palabras.add("BRITNEY");
 	}
 
 	
