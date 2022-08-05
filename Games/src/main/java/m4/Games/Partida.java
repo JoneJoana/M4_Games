@@ -8,11 +8,12 @@ public class Partida {
 	private String palabra;
 	private String palabraActualSecreta;
 	public static final int INTENTOS_MAX = 10;
+	private boolean pistaPedida;
 
 	public Partida(String palabra) {
 		this.intentos = INTENTOS_MAX;
 		this.palabra = palabra;
-
+		pistaPedida = false;
 	}
 
 	public String getPalabra() {
@@ -25,6 +26,10 @@ public class Partida {
 
 	public int getIntentos() {
 		return intentos;
+	}
+
+	public boolean isPistaPedida() {
+		return pistaPedida;
 	}
 
 	public ArrayList<Integer> posicionesLetra(String letraTeclado) {
@@ -43,7 +48,7 @@ public class Partida {
 		return posicionesLetra;
 	}
 
-	public void mostrarLetraPista() {
+	public String mostrarLetraPista() {
 		String letra = "";
 		char[] palabraSecreta = palabraActualSecreta.toCharArray();// la palabra con los asteriscos
 		for (int i = 0; i < palabraSecreta.length; i += 2) {// Se recorre
@@ -54,6 +59,8 @@ public class Partida {
 
 		}
 		cambiarAsterisco(letra, posicionesLetra(letra));
+		pistaPedida=true;
+		return letra;
 	}
 
 	/***

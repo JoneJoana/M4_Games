@@ -226,6 +226,14 @@ public class Ventana extends JFrame {
 		// seria equivalente a quitar una vida
 	}
 	
+	public void deshabilitarLetra(String letra) {
+		for(int i = 0; i < arrayBotonesLetras.length; i++) {
+			if(arrayBotonesLetras[i].getText().equals(letra)) {
+				arrayBotonesLetras[i].setEnabled(false);
+			}
+		}
+	}
+	
 	public void habilitarBtnInicio() {
 		btnIniciarJuego.setEnabled(true);
 	}

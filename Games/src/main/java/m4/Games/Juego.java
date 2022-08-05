@@ -15,7 +15,7 @@ public class Juego {
 
 	private void rellenarPalabras() {
 		palabras.add("TABACO");
-		palabras.add("ESTOCOLMO");
+		/*palabras.add("ESTOCOLMO");
 		palabras.add("AZUCENA");
 		palabras.add("CANDELABRO");
 		palabras.add("RESURRECCION");
@@ -23,7 +23,7 @@ public class Juego {
 		palabras.add("GITHUB");
 		palabras.add("ANTANANARIVO");
 		palabras.add("MADAGASCAR");
-		palabras.add("BRITNEY");
+		palabras.add("BRITNEY");*/
 	}
 
 	
@@ -57,7 +57,7 @@ public class Juego {
 	}
 	
 	public boolean comprobarFinJuego() {
-		if(vidas < 0 || palabras.size() == 0) {
+		if(vidas == 0 || palabras.size() == 0) {
 			return true;
 		}
 		return false;
