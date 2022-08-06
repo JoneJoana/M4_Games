@@ -177,7 +177,7 @@ public class Controlador {
 				
 				if(juego.comprobarFinJuego()) {			// partida ganada juego terminado
 					JOptionPane.showMessageDialog(ventana, "Enhorabuena has ganado el juego, no quedan mas palabras.");
-					ventana.setVisible(false);
+					ventana.dispose();
 				} else {								// partida ganada juego no terminado
 					respuestaFinPartida();
 				}
@@ -187,7 +187,7 @@ public class Controlador {
 				ventana.quitarVida();
 				if(juego.comprobarFinJuego()) {			// partida perdida juego terminado
 					JOptionPane.showMessageDialog(ventana, "Fin de juego. No te quedan mas vidas :(");
-					ventana.setVisible(false);
+					ventana.dispose();
 				} else {								// partida perdida juego no terminado
 					respuestaFinPartida();
 				}
@@ -204,8 +204,8 @@ public class Controlador {
 			ventana.getBtnIniciarJuego().doClick(5);// reiniciamos partida nueva
 
 		} else {
-			JOptionPane.showMessageDialog(ventana, "HASTA LA PROXIMA!");
-			ventana.setVisible(false);
+			JOptionPane.showMessageDialog(ventana, "HASTA LA PROXIMA!");			
+			ventana.dispose();
 		}
 	}
 
