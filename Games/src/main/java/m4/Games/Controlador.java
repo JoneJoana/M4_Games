@@ -226,45 +226,31 @@ public class Controlador {
 
 	// aclarar en que momentos llamarlo
 	public void estadoJuego() {
-
+		
 		if (juego.getPartida().comprobarFinPartida()) {
-
-			if (juego.getPartida().ganarPartida()) {
-
-				if (juego.comprobarFinJuego()) { // partida ganada juego terminado
+			
+			if(juego.getPartida().ganarPartida()) {
+				
+				if(juego.comprobarFinJuego()) {			// partida ganada juego terminado
 					JOptionPane.showMessageDialog(ventana, "Enhorabuena has ganado el juego, no quedan mas palabras.");
 					ventana.dispose();
-				} else { // partida ganada juego no terminado
+				} else {								// partida ganada juego no terminado
 					respuestaFinPartida();
 				}
-
-				boolean respuesta = ventana.estasSeguro("quieres iniciar otra partida?", "FIN PARTIDA");
-
-				if (respuesta) {// yes
-					ventana.quitarVida();
-					juego.quitarVida();
-					// estadoJuego();
-					ventana.habilitarBtnInicio();
-					ventana.getBtnIniciarJuego().doClick(5);// reiniciamos partida nueva
-
-				} else {
-					JOptionPane.showMessageDialog(ventana, "HASTA LA PROXIMA!");
-					ventana.setVisible(false);
-				}
+				
 			} else {
 				juego.quitarVida();
 				ventana.quitarVida();
-				if (juego.comprobarFinJuego()) { // partida perdida juego terminado
+				if(juego.comprobarFinJuego()) {			// partida perdida juego terminado
 					JOptionPane.showMessageDialog(ventana, "Fin de juego. No te quedan mas vidas :(");
 					ventana.dispose();
-				} else { // partida perdida juego no terminado
+				} else {								// partida perdida juego no terminado
 					respuestaFinPartida();
 				}
 			}
-
+			
 		}
-
-	}
+}
 
 	private void respuestaFinPartida() {
 		boolean respuesta = ventana.estasSeguro("quieres iniciar otra partida?", "FIN PARTIDA");
