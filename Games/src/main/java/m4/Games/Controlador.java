@@ -16,13 +16,13 @@ public class Controlador {
 
 	public Controlador() {
 		palabrasAdicionales = new ArrayList<String>();
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					menu = new Menu();
 					menu.setVisible(true);
-					
+
 					actionBtnAnadirPalabra();
 					actionBtnNuevoJuego();
 				} catch (Exception e) {
@@ -30,36 +30,37 @@ public class Controlador {
 				}
 			}
 		});
-		
+
 	}
-	
+
 	public void actionBtnAnadirPalabra() {
 		menu.getBtnAnadirPalabra().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 				String palabra = JOptionPane.showInputDialog("Introduce una palabra");
 				palabra = palabra.toUpperCase();
-				if(comprovarPalabra(palabra)) {
+				if (comprovarPalabra(palabra)) {
 					palabrasAdicionales.add(palabra);
 				} else {
-					JOptionPane.showMessageDialog(menu, palabra+" no es una palabra valida","ERROR", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(menu, palabra + " no es una palabra valida", "ERROR",
+							JOptionPane.ERROR_MESSAGE);
 				}
-				
+
 			}
 		});
 	}
-	
+
 	private boolean comprovarPalabra(String palabra) {
 		String letras = Ventana.LETRAS;
-		for(char letraPalabra : palabra.toCharArray()) {
+		for (char letraPalabra : palabra.toCharArray()) {
 			String stringLetraPalabra = Character.toString(letraPalabra);
-			if(!letras.contains(stringLetraPalabra)) {
+			if (!letras.contains(stringLetraPalabra)) {
 				return false;
 			}
 		}
 		return true;
 	}
-	
+
 	public void actionBtnNuevoJuego() {
 		menu.getBtnNuevoJuego().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -68,7 +69,7 @@ public class Controlador {
 			}
 		});
 	}
-	
+
 	public void crearJuego(int dificultad) {
 		juego = new Juego(palabrasAdicionales, dificultad);
 		// generar ventana
@@ -100,7 +101,7 @@ public class Controlador {
 				juego.crearPartida();
 				juego.getPartida().ponerPalabraSecreta();
 				ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
-				
+
 				// poner letras teclado habilitadas
 				ventana.habilitarBotones();
 				quitarPistasUsadas();
@@ -137,7 +138,7 @@ public class Controlador {
 						ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
 						// Habilitar boton nueva partido
 						ventana.habilitarBtnInicio();
-						//Saber si hemos terminado partida
+						// Saber si hemos terminado partida
 						estadoJuego();
 					}
 				} else {
@@ -151,18 +152,18 @@ public class Controlador {
 		ActionListener pistaListener = new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				if(!juego.getPartida().isPistaPedida()) {
+				if (!juego.getPartida().isPistaPedida()) {
 					// condicion vidas
 					if (juego.getVidas() > 1) {
-						boolean respuesta = ventana.estasSeguro("Perderas una vida a cambio de una pista, estas seguro?",
-								"PISTA");
+						boolean respuesta = ventana
+								.estasSeguro("Perderas una vida a cambio de una pista, estas seguro?", "PISTA");
 						if (respuesta == true) {
 							ventana.quitarVida();
 							juego.quitarVida();
 							String letra = juego.getPartida().mostrarLetraPista();
 							ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
 							ventana.deshabilitarLetra(letra);
-							//Saber si hemos terminado partida y/o juego
+							// Saber si hemos terminado partida y/o juego
 							estadoJuego();
 						}
 					} else {
@@ -170,10 +171,9 @@ public class Controlador {
 								"No tienes suficientes vidas para canjearlas por pistas!!! :(");
 					}
 				} else {
-					JOptionPane.showMessageDialog(ventana,
-							"Ya has pedido una pista en esta partida!");
+					JOptionPane.showMessageDialog(ventana, "Ya has pedido una pista en esta partida!");
 				}
-				
+
 			}
 		};
 		for (int i = 0; i < ventana.getArrayPistas().length; i++) {
@@ -188,11 +188,10 @@ public class Controlador {
 			public void actionPerformed(ActionEvent e) {
 				/*
 				 * si existe la letra -> se desactivara el boton y mostrara las letras de la
-				 * palabra secreta acertada 
-				 * si no existe la letra -> se carga la siguiente
+				 * palabra secreta acertada si no existe la letra -> se carga la siguiente
 				 * imagen del ahorcado
-				 */				
-				
+				 */
+
 				// extraemos info del evento que activa este actionListener;
 				String letra = e.getActionCommand();
 				JButton tecla = (JButton) e.getSource();
@@ -207,9 +206,9 @@ public class Controlador {
 					ventana.cambiarImagen(Partida.INTENTOS_MAX - juego.getPartida().getIntentos());
 				}
 				// en cualquier caso se desactiva botonLetra
-				tecla.setEnabled(false);	
-				
-				//Saber si hemos terminado partida y/o juego
+				tecla.setEnabled(false);
+
+				// Saber si hemos terminado partida y/o juego
 				estadoJuego();
 			}
 
@@ -224,58 +223,57 @@ public class Controlador {
 
 	}
 
-	//aclarar en que momentos llamarlo
+	// aclarar en que momentos llamarlo
 	public void estadoJuego() {
-		
+
 		if (juego.getPartida().comprobarFinPartida()) {
-			
-			if(juego.getPartida().ganarPartida()) {
-				
-				if(juego.comprobarFinJuego()) {			// partida ganada juego terminado
+
+			if (juego.getPartida().ganarPartida()) {
+
+				if (juego.comprobarFinJuego()) { // partida ganada juego terminado
 					JOptionPane.showMessageDialog(ventana, "Enhorabuena has ganado el juego, no quedan mas palabras.");
 					ventana.dispose();
-				} else {								// partida ganada juego no terminado
+				} else { // partida ganada juego no terminado
 					respuestaFinPartida();
 				}
-				
 
 				boolean respuesta = ventana.estasSeguro("quieres iniciar otra partida?", "FIN PARTIDA");
-
 
 				if (respuesta) {// yes
 					ventana.quitarVida();
 					juego.quitarVida();
 					// estadoJuego();
-					ventana.habilitarBtnInicio();					
+					ventana.habilitarBtnInicio();
 					ventana.getBtnIniciarJuego().doClick(5);// reiniciamos partida nueva
 
 				} else {
 					JOptionPane.showMessageDialog(ventana, "HASTA LA PROXIMA!");
 					ventana.setVisible(false);
 
+				}
 			} else {
 				juego.quitarVida();
 				ventana.quitarVida();
-				if(juego.comprobarFinJuego()) {			// partida perdida juego terminado
+				if (juego.comprobarFinJuego()) { // partida perdida juego terminado
 					JOptionPane.showMessageDialog(ventana, "Fin de juego. No te quedan mas vidas :(");
 					ventana.dispose();
-				} else {								// partida perdida juego no terminado
+				} else { // partida perdida juego no terminado
 					respuestaFinPartida();
 				}
 			}
-			
+
 		}
 
 	}
-	
-	private void respuestaFinPartida () {
+
+	private void respuestaFinPartida() {
 		boolean respuesta = ventana.estasSeguro("quieres iniciar otra partida?", "FIN PARTIDA");
-		if (respuesta) {					// partida ganada juego no terminado
-			ventana.habilitarBtnInicio();					
+		if (respuesta) { // partida ganada juego no terminado
+			ventana.habilitarBtnInicio();
 			ventana.getBtnIniciarJuego().doClick(5);// reiniciamos partida nueva
 
 		} else {
-			JOptionPane.showMessageDialog(ventana, "HASTA LA PROXIMA!");			
+			JOptionPane.showMessageDialog(ventana, "HASTA LA PROXIMA!");
 			ventana.dispose();
 		}
 	}
