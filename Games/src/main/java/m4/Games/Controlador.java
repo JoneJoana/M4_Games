@@ -185,7 +185,7 @@ public class Controlador {
 					juego.quitarVida();
 					// estadoJuego();
 					ventana.habilitarBtnInicio();					
-					ventana.getBtnIniciarJuego().doClick(5);;// reiniciamos partida nueva
+					ventana.getBtnIniciarJuego().doClick(5);// reiniciamos partida nueva
 
 				} else {
 					JOptionPane.showMessageDialog(ventana, "HASTA LA PROXIMA!");
