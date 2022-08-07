@@ -6,24 +6,48 @@ public class Juego {
 
 	private int vidas;
 	private Partida partida;
-	private ArrayList<String> palabras = new ArrayList<String>();	
+	private ArrayList<String> palabras;	
+	private int dificultad;		//1 facil	2 intermedio	3 dificil
 
-	public Juego() {
+	public Juego(ArrayList<String> palabrasAdicionales, int dificultad) {
 		this.vidas = 5;
-		rellenarPalabras();
+		this.dificultad = dificultad;
+		this.palabras = palabrasAdicionales;
+		switch(dificultad) {
+		case 1:
+			rellenarPalabrasFacil();
+			break;
+		case 2:
+			rellenarPalabrasIntermedio();
+			break;
+		case 3:
+			rellenarPalabrasDificil();
+			break;
+		default:
+			rellenarPalabrasFacil();
+			break;
+		}
 	}
 
-	private void rellenarPalabras() {
+	private void rellenarPalabrasFacil() {
 		palabras.add("TABACO");
-		palabras.add("ESTOCOLMO");
 		palabras.add("AZUCENA");
+		palabras.add("GITHUB");
+		palabras.add("BRITNEY");
+	}
+
+	private void rellenarPalabrasIntermedio() {
+		rellenarPalabrasFacil();
+		palabras.add("ESTOCOLMO");
 		palabras.add("CANDELABRO");
+		palabras.add("MADAGASCAR");
+	}
+
+	private void rellenarPalabrasDificil() {
+		rellenarPalabrasIntermedio();
 		palabras.add("RESURRECCION");
 		palabras.add("DESHABILITAR");
-		palabras.add("GITHUB");
 		palabras.add("ANTANANARIVO");
-		palabras.add("MADAGASCAR");
-		palabras.add("BRITNEY");
 	}
 
 	
@@ -37,7 +61,17 @@ public class Juego {
 	}
 
 	public void crearPartida() {
-		partida = new Partida(extraerPalabraRandom());
+		switch(dificultad) {
+		case 1:
+			partida = new Partida(extraerPalabraRandom(), 10);	//facil 10 intentos
+			break;
+		case 2:
+			partida = new Partida(extraerPalabraRandom(), 8);	//intermedio 8 intentos
+			break;
+		case 3:
+			partida = new Partida(extraerPalabraRandom(), 6);	//dificil	6 intentos
+			break;
+		}
 	}
 	
 	public void quitarVida() {

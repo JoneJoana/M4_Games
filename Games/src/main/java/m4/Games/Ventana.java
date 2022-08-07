@@ -27,15 +27,13 @@ public class Ventana extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnIniciarJuego;
-	public void setBtnIniciarJuego(JButton btnIniciarJuego) {
-		this.btnIniciarJuego = btnIniciarJuego;
-	}
-
 	private JButton[] arrayBotonesLetras;
 	private JButton[] arrayPistas;
 	private Label labelPalabra;
 	private JButton btnResolver;
 	private JLabel lblDibujo;
+	
+	public static final String LETRAS = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 
 	/**
 	 * Create the frame.
@@ -121,7 +119,7 @@ public class Ventana extends JFrame {
 
 	private void rellenarBotonesLetras(JPanel panelTeclado) {
 		// rellenar el array
-		String letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+		String letras = LETRAS;
 		arrayBotonesLetras = new JButton[letras.length()];
 		for (int i = 0; i < letras.length(); i++) {
 			arrayBotonesLetras[i] = new JButton(String.valueOf(letras.charAt(i)));// nombramos boton
@@ -268,5 +266,9 @@ public class Ventana extends JFrame {
 
 	public void setLabelPalabra(Label labelPalabra) {
 		this.labelPalabra = labelPalabra;
+	}
+	
+	public void setBtnIniciarJuego(JButton btnIniciarJuego) {
+		this.btnIniciarJuego = btnIniciarJuego;
 	}
 }

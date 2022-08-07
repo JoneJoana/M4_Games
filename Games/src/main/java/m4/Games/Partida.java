@@ -10,8 +10,8 @@ public class Partida {
 	public static final int INTENTOS_MAX = 10;
 	private boolean pistaPedida;
 
-	public Partida(String palabra) {
-		this.intentos = INTENTOS_MAX;
+	public Partida(String palabra, int intentos) {
+		this.intentos = intentos;
 		this.palabra = palabra;
 		pistaPedida = false;
 	}

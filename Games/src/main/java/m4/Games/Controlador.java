@@ -11,9 +11,66 @@ import javax.swing.JOptionPane;
 public class Controlador {
 	private Juego juego;
 	private Ventana ventana;
+	private Menu menu;
+	private ArrayList<String> palabrasAdicionales;
 
 	public Controlador() {
-		juego = new Juego();
+		palabrasAdicionales = new ArrayList<String>();
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					menu = new Menu();
+					menu.setVisible(true);
+					
+					actionBtnAnadirPalabra();
+					actionBtnNuevoJuego();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+	}
+	
+	public void actionBtnAnadirPalabra() {
+		menu.getBtnAnadirPalabra().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				String palabra = JOptionPane.showInputDialog("Introduce una palabra");
+				palabra = palabra.toUpperCase();
+				if(comprovarPalabra(palabra)) {
+					palabrasAdicionales.add(palabra);
+				} else {
+					JOptionPane.showMessageDialog(menu, palabra+" no es una palabra valida","ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+				
+			}
+		});
+	}
+	
+	private boolean comprovarPalabra(String palabra) {
+		String letras = Ventana.LETRAS;
+		for(char letraPalabra : palabra.toCharArray()) {
+			String stringLetraPalabra = Character.toString(letraPalabra);
+			if(!letras.contains(stringLetraPalabra)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public void actionBtnNuevoJuego() {
+		menu.getBtnNuevoJuego().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				crearJuego(menu.getDificultad());
+				menu.dispose();
+			}
+		});
+	}
+	
+	public void crearJuego(int dificultad) {
+		juego = new Juego(palabrasAdicionales, dificultad);
 		// generar ventana
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -32,25 +89,24 @@ public class Controlador {
 				}
 			}
 		});
-
 	}
 
 	// Thread.sleep();
 	public void actionBtnIniciar() {
 		ventana.getBtnIniciarJuego().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// poner letras teclado habilitadas
-				
-				ventana.habilitarBotones();
-				quitarPistasUsadas();
-
-				// quitar o poner invisible imagen
-				ventana.cambiarImagen(0);
 
 				// escoger nueva palabra
 				juego.crearPartida();
 				juego.getPartida().ponerPalabraSecreta();
 				ventana.cambiarPalabra(juego.getPartida().getPalabraActualSecreta());
+				
+				// poner letras teclado habilitadas
+				ventana.habilitarBotones();
+				quitarPistasUsadas();
+
+				// quitar o poner invisible imagen
+				ventana.cambiarImagen(Partida.INTENTOS_MAX - juego.getPartida().getIntentos());
 
 				// deshabilitar boton nueva partida
 				ventana.deshabilitarBtnInicio();
