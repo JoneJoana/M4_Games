@@ -38,13 +38,14 @@ public class Controlador {
 			public void actionPerformed(ActionEvent arg0) {
 
 				String palabra = JOptionPane.showInputDialog("Introduce una palabra");
-				palabra = palabra.toUpperCase();
-				if(comprovarPalabra(palabra)) {
-					palabrasAdicionales.add(palabra);
-				} else {
-					JOptionPane.showMessageDialog(menu, palabra+" no es una palabra valida","ERROR", JOptionPane.ERROR_MESSAGE);
-				}
-				
+				if(!(palabra == null)) {
+					palabra = palabra.toUpperCase();
+					if(comprovarPalabra(palabra)) {
+						palabrasAdicionales.add(palabra);
+					} else {
+						JOptionPane.showMessageDialog(menu, palabra+" no es una palabra valida","ERROR", JOptionPane.ERROR_MESSAGE);
+					}
+				} 
 			}
 		});
 	}
@@ -252,7 +253,7 @@ public class Controlador {
 				} else {
 					JOptionPane.showMessageDialog(ventana, "HASTA LA PROXIMA!");
 					ventana.setVisible(false);
-
+				}
 			} else {
 				juego.quitarVida();
 				ventana.quitarVida();
