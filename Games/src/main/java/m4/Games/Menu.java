@@ -10,6 +10,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Menu extends JFrame {
 
@@ -19,6 +21,8 @@ public class Menu extends JFrame {
 	private JRadioButton rdbtnFacil;
 	private JRadioButton rdbtnIntermedio;
 	private JRadioButton rdbtnDificil;
+	private JButton btnAboutUs;
+	private JButton btnComoJugar;
 
 	/**
 	 * Create the frame.
@@ -38,36 +42,44 @@ public class Menu extends JFrame {
 		rdbtnFacil = new JRadioButton("Fácil");
 		rdbtnFacil.setSelected(true);
 		rdbtnFacil.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		rdbtnFacil.setBounds(139, 58, 123, 34);
+		rdbtnFacil.setBounds(195, 22, 123, 34);
 		buttonGroup.add(rdbtnFacil);
 		contentPane.add(rdbtnFacil);
 		
 		rdbtnIntermedio = new JRadioButton("Intermedio");
 		rdbtnIntermedio.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		rdbtnIntermedio.setBounds(139, 94, 123, 36);
+		rdbtnIntermedio.setBounds(195, 58, 123, 36);
 		buttonGroup.add(rdbtnIntermedio);
 		contentPane.add(rdbtnIntermedio);
 		
 		rdbtnDificil = new JRadioButton("Difícil");
 		rdbtnDificil.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		rdbtnDificil.setBounds(139, 132, 123, 34);
+		rdbtnDificil.setBounds(195, 96, 123, 34);
 		buttonGroup.add(rdbtnDificil);
 		contentPane.add(rdbtnDificil);
 		
 		btnNuevoJuego = new JButton("Nuevo Juego");
 		btnNuevoJuego.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnNuevoJuego.setBounds(229, 193, 146, 48);
+		btnNuevoJuego.setBounds(228, 156, 146, 48);
 		contentPane.add(btnNuevoJuego);
 		
 		JLabel lblDificultad = new JLabel("Dificultad");
 		lblDificultad.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDificultad.setBounds(30, 94, 103, 36);
+		lblDificultad.setBounds(86, 58, 103, 36);
 		contentPane.add(lblDificultad);
 		
 		btnAnadirPalabra = new JButton("Añadir Palabra");
 		btnAnadirPalabra.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnAnadirPalabra.setBounds(52, 193, 146, 48);
+		btnAnadirPalabra.setBounds(49, 156, 146, 48);
 		contentPane.add(btnAnadirPalabra);
+		
+		btnAboutUs = new JButton("About Us");
+		btnAboutUs.setBounds(82, 229, 89, 23);
+		contentPane.add(btnAboutUs);
+		
+		btnComoJugar = new JButton("Cómo jugar");
+		btnComoJugar.setBounds(253, 229, 103, 23);
+		contentPane.add(btnComoJugar);
 	}
 
 	public JButton getBtnAnadirPalabra() {
@@ -76,6 +88,15 @@ public class Menu extends JFrame {
 
 	public JButton getBtnNuevoJuego() {
 		return btnNuevoJuego;
+	}
+	
+	
+	public JButton getBtnAboutUs() {
+		return btnAboutUs;
+	}
+
+	public JButton getBtnComoJugar() {
+		return btnComoJugar;
 	}
 	
 	public int getDificultad() {

@@ -25,6 +25,8 @@ public class Controlador {
 
 					actionBtnAnadirPalabra();
 					actionBtnNuevoJuego();
+					actionBtnAboutUs();
+					actionBtnComoJugarU();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -38,28 +40,32 @@ public class Controlador {
 			public void actionPerformed(ActionEvent arg0) {
 
 				String palabra = JOptionPane.showInputDialog("Introduce una palabra");
-				if(!(palabra == null)) {
-					palabra = palabra.toUpperCase();
-					if(comprovarPalabra(palabra)) {
-						palabrasAdicionales.add(palabra);
-					} else {
-						JOptionPane.showMessageDialog(menu, palabra+" no es una palabra valida","ERROR", JOptionPane.ERROR_MESSAGE);
-					}
-				} 
-
+				
+				if(comprovarPalabra(palabra)) {
+					palabrasAdicionales.add(palabra);
+				} else {
+					JOptionPane.showMessageDialog(menu, palabra+" no es una palabra valida","ERROR", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 	}
 
 	private boolean comprovarPalabra(String palabra) {
-		String letras = Ventana.LETRAS;
-		for (char letraPalabra : palabra.toCharArray()) {
-			String stringLetraPalabra = Character.toString(letraPalabra);
-			if (!letras.contains(stringLetraPalabra)) {
-				return false;
+		
+		if(palabra != null) {
+			if(!palabra.equals("")) {
+				palabra = palabra.toUpperCase();				
+				String letras = Ventana.LETRAS;
+				for (char letraPalabra : palabra.toCharArray()) {
+					String stringLetraPalabra = Character.toString(letraPalabra);
+					if (!letras.contains(stringLetraPalabra)) {
+						return false;
+					}
+				}
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 
 	public void actionBtnNuevoJuego() {
@@ -70,6 +76,23 @@ public class Controlador {
 			}
 		});
 	}
+	
+	public void actionBtnAboutUs() {
+		 menu.getBtnAboutUs().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(menu, "Colaboradores: David, Ionela, Joana");				
+			}
+		});
+	}
+		
+	public void actionBtnComoJugarU() {
+		menu.getBtnComoJugar().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(menu, "Adivina la palabra secreta, clicando en cada letra o gastando una pista.");
+			}
+		});
+	}
+	
 
 	public void crearJuego(int dificultad) {
 		juego = new Juego(palabrasAdicionales, dificultad);
