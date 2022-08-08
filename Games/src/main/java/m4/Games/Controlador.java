@@ -150,9 +150,7 @@ public class Controlador {
 			public void actionPerformed(ActionEvent arg0) {
 				// Confirmar siguiente partida
 				if (juego.getVidas() > 1) {
-					if (ventana.estasSeguro("Deseas resolver la partida? Perderas una vida", "Resolver")) {
-						// juego.terminarPartida(); --pasa en juego
-						// juego.crearPartida();
+					if (ventana.estasSeguro("Deseas resolver la partida? Perderas una vida", "Resolver")) {						
 						// -> desabilitar botones --pasa en ventana
 						ventana.deshabilitarBotones();
 						// ->muestra la palabra secreta--pasa en ventana
