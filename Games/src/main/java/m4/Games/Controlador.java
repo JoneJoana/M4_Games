@@ -42,7 +42,7 @@ public class Controlador {
 				String palabra = JOptionPane.showInputDialog("Introduce una palabra");
 				
 				if(comprovarPalabra(palabra)) {
-					palabrasAdicionales.add(palabra);
+					palabrasAdicionales.add(palabra.toUpperCase());
 				} else {
 					JOptionPane.showMessageDialog(menu, palabra+" no es una palabra valida","ERROR", JOptionPane.ERROR_MESSAGE);
 				}
